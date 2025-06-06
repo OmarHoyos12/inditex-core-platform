@@ -2,7 +2,6 @@
 package com.inditex.coreplatform.application.service;
 
 import com.inditex.coreplatform.domain.model.Price;
-
 import java.time.LocalDateTime;
 
 /**

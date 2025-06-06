@@ -2,7 +2,6 @@
 package com.inditex.coreplatform.domain.repository;
 
 import com.inditex.coreplatform.domain.model.Price;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -14,7 +13,5 @@ public interface PriceRepositoryPort {
     /**
      * Devuelve el precio válido con mayor prioridad (si existe) para un productId, brandId y fecha dada.
      */
-    Optional<Price> findTopByProductIdAndBrandIdAndDate(Long productId,
-                                                        Integer brandId,
-                                                        LocalDateTime applicationDate);
+    Optional<Price> findTopByProductIdAndBrandIdAndDate(Long productId, Integer brandId, LocalDateTime applicationDate);
 }

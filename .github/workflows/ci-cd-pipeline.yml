@@ -1,4 +1,5 @@
-# .github/workflows/ci-pipeline.yml
+# .github/workflows/ci-cd-pipeline.yml
+
 name: CI Pipeline
 
 on:
@@ -31,7 +32,7 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      - name: Build, Test and SonarQube
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew clean build sonarqube -Dsonar.login=$SONAR_TOKEN
+      - name: Build and Test
+        run: |
+          ./gradlew clean build jacocoTestReport --no-daemon
+          echo "✅ Build completado y tests ejecutados"

@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Entidad de dominio Price (sin anotaciones JPA).
  */
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
