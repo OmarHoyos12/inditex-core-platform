@@ -1,9 +1,10 @@
 // coreplatform/build.gradle
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.0'
-	id 'jacoco' // necesario para SonarQube (aunque no usemos Jacoco explícito)
+	id 'jacoco'
 	id 'org.sonarqube' version '4.3.0.3225'
 }
 
@@ -20,18 +21,45 @@ repositories {
 }
 
 dependencies {
+	// 1. Spring Web (MVC + Jackson + validación)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 2. Spring Data JPA (Hibernate + JPA)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// 3. Bean Validation (Hibernate Validator)
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 4. SpringDoc OpenAPI (Swagger UI)
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+	// 5. Swagger Parser (para OpenApiConfig)
+	implementation('io.swagger.parser.v3:swagger-parser:2.1.16') {
+		exclude group: 'javax.xml.bind', module: 'jaxb-api'
+		exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
+		exclude group: 'org.glassfish.jaxb', module: 'jaxb-core'
+	}
+
+	// 6. Commons IO (IOUtils)
+	implementation 'commons-io:commons-io:2.11.0'
+
+	// 7. Lombok (generación de getters, setters, builders)
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// 8. H2 Database (en memoria)
 	runtimeOnly 'com.h2database:h2'
+
+	// 9. Spring Boot Test (JUnit 5, Mockito, MockMvc, AssertJ)
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+jacoco {
+	toolVersion = "0.8.8"
 }
 
 sonarqube {
@@ -41,8 +69,4 @@ sonarqube {
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.java.binaries", "build/classes"
 	}
-}
-
-jacoco {
-	toolVersion = "0.8.8"
 }
