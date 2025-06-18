@@ -1,4 +1,3 @@
-// coreplatform/src/main/java/com/inditex/coreplatform/infrastructure/rest/dto/PriceResponse.java
 package com.inditex.coreplatform.infrastructure.rest.dto;
 
 import lombok.AllArgsConstructor;
@@ -10,7 +9,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * DTO que representa la respuesta JSON del endpoint GET /api/v1/prices.
+ * DTO que representa la respuesta JSON del endpoint para consultar el precio aplicable.
+ *
+ * <p>Contiene la información del precio, incluyendo los identificadores del producto y la marca,
+ * la lista de precio, el rango de vigencia, el valor y la moneda.</p>
  */
 @Data
 @NoArgsConstructor
@@ -23,5 +25,4 @@ public class PriceResponse {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private BigDecimal price;
-    private String currency;
 }

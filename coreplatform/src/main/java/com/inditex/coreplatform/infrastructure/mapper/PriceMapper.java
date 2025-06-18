@@ -1,14 +1,21 @@
-// coreplatform/src/main/java/com/inditex/coreplatform/infrastructure/mapper/PriceMapper.java
 package com.inditex.coreplatform.infrastructure.mapper;
 
 import com.inditex.coreplatform.domain.model.Price;
 import com.inditex.coreplatform.infrastructure.persistence.entity.PriceEntity;
 
 /**
- * Convierte entre PriceEntity (JPA) y Price (dominio).
+ * Realiza la conversión entre la entidad JPA {@link PriceEntity} y la entidad de dominio {@link Price}.
+ *
+ * <p>Proporciona métodos de mapeo bidireccionales para transformar datos entre la capa de persistencia y la capa
+ * de dominio.</p>
  */
 public class PriceMapper {
 
+    /**
+     * Convierte una instancia de {@link PriceEntity} en una instancia de {@link Price}.
+     *
+     * @param entity Objeto {@link PriceEntity} a convertir.
+     */
     public static Price toDomain(PriceEntity entity) {
         if (entity == null) {
             return null;
@@ -25,6 +32,12 @@ public class PriceMapper {
                 .build();
     }
 
+    /**
+     * Convierte una instancia de {@link Price} en una instancia de {@link PriceEntity}.
+     *
+     * @param domain Objeto {@link Price} a convertir.
+     * @return Una instancia de {@link PriceEntity} equivalente, o {@code null} si el dominio es nulo.
+     */
     public static PriceEntity toEntity(Price domain) {
         if (domain == null) {
             return null;
@@ -41,3 +54,4 @@ public class PriceMapper {
                 .build();
     }
 }
+

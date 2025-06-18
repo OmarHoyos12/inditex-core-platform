@@ -1,5 +1,3 @@
-# coreplatform/src/main/resources/openapi.yml
-
 openapi: 3.0.1
 info:
   title: "Inditex Core Platform API"

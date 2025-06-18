@@ -1,4 +1,3 @@
-// coreplatform/src/main/java/com/inditex/coreplatform/infrastructure/persistence/entity/PriceEntity.java
 package com.inditex.coreplatform.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
@@ -12,11 +11,14 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Entidad JPA que representa la tabla PRICES.
+ * Entidad JPA que representa la tabla "PRICES" en la base de datos.
+ *
+ * <p>Mapea los atributos de la tabla a propiedades de la entidad, permitiendo la gestión de precios a través de JPA.</p>
  */
 @Entity
 @Table(name = "PRICES")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -47,6 +49,6 @@ public class PriceEntity {
     @Column(name = "PRICE", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "CURR", nullable = false)
+    @Column(name = "CURRENCY", nullable = false)
     private String currency;
 }

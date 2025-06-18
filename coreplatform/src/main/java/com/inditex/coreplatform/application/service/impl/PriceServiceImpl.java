@@ -1,4 +1,3 @@
-// coreplatform/src/main/java/com/inditex/coreplatform/application/service/impl/PriceServiceImpl.java
 package com.inditex.coreplatform.application.service.impl;
 
 import com.inditex.coreplatform.application.service.PriceService;
@@ -11,7 +10,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 /**
- * Implementación del caso de uso de obtener precio.
+ * Implementación por defecto de {@link PriceService} que utiliza {@link PriceRepositoryPort}
+ * para obtener el precio aplicable.
  */
 @Service
 @RequiredArgsConstructor
@@ -25,7 +25,8 @@ public class PriceServiceImpl implements PriceService {
                 .findTopByProductIdAndBrandIdAndDate(productId, brandId, applicationDate)
                 .orElseThrow(() -> new PriceNotFoundException(
                         String.format("No se encontró precio para productId=%d, brandId=%d, date=%s",
-                                productId, brandId, applicationDate))
-                );
+                                productId, brandId, applicationDate)
+                ));
     }
 }
+
