@@ -1,19 +1,26 @@
 package com.inditex.coreplatform;
 
+import com.inditex.coreplatform.application.service.PriceService;
+import com.inditex.coreplatform.infrastructure.rest.controller.PriceController;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-/**
- * Este test verifica que el contexto de Spring se cargue sin problemas.
- * Hemos deshabilitado la inicialización de data.sql para evitar error de H2.
- */
-@SpringBootTest(properties = {
-		"spring.sql.init.mode=never"  // <— Desactiva data.sql para este test de contexto
-})
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+@SpringBootTest
 class InditexApplicationTests {
+
+	@Autowired
+	private PriceController priceController;
+
+	@Autowired
+	private PriceService priceService;
 
 	@Test
 	void contextLoads() {
-		// El test pasa si el contexto de Spring arranca correctamente
+		assertNotNull(priceController);
+		assertNotNull(priceService);
 	}
 }
+
