@@ -1,4 +1,3 @@
-// coreplatform/src/main/java/com/inditex/coreplatform/domain/model/Price.java
 package com.inditex.coreplatform.domain.model;
 
 import lombok.AllArgsConstructor;
@@ -11,9 +10,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Entidad de dominio Price (sin anotaciones JPA).
+ * Entidad de dominio que representa la información de un precio.
+ *
+ * <p>Esta clase contiene los atributos relacionados con el precio de un producto de forma independiente
+ * de la persistencia.</p>
  */
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -27,3 +30,4 @@ public class Price {
     private BigDecimal price;
     private String currency;
 }
+
