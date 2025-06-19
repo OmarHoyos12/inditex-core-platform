@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Get Applicable Price",
+    "_postman_id": "12345-67890-abcdef-12345",
+    "description": "Recupera el precio aplicable para un producto en una fecha y hora específicas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Price",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/prices?applicationDate=2020-06-14T00:00:00&productId=35455&brandId=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "prices"
+          ],
+          "query": [
+            {
+              "key": "applicationDate",
+              "value": "2020-06-14T00:00:00"
+            },
+            {
+              "key": "productId",
+              "value": "35455"
+            },
+            {
+              "key": "brandId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
