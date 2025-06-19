@@ -1,0 +1,71 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'jacoco'
+	id 'org.sonarqube' version '4.4.1.3373' // 🆙 versión estable de plugin SonarQube
+}
+
+group = 'com.inditex.coreplatform'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21) // 🆙 Java 21
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 1. Spring Web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 2. Spring Data JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// 3. Validación
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 4. SpringDoc OpenAPI (compatible con Spring Boot 3.4)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+	// 5. Swagger Parser
+	implementation('io.swagger.parser.v3:swagger-parser:2.1.16') {
+		exclude group: 'javax.xml.bind', module: 'jaxb-api'
+		exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
+		exclude group: 'org.glassfish.jaxb', module: 'jaxb-core'
+	}
+
+	// 6. Commons IO
+	implementation 'commons-io:commons-io:2.11.0'
+
+	// 7. Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// 8. H2 Database
+	runtimeOnly 'com.h2database:h2'
+
+	// 9. Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jacoco {
+	toolVersion = "0.8.10"
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "TU_ORG_inditex-core-platform"
+		property "sonar.organization", "TU_ORG"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.java.binaries", "build/classes"
+	}
+}
